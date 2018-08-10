@@ -1,6 +1,10 @@
 # vuepress
 
-> A Vue.js project
+> A Vue.js project to play with BuddyPress API.
+
+## TODO
+
+* CRUD operations on activity component
 
 ## Build Setup
 
