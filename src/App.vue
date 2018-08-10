@@ -7,6 +7,8 @@
 <script>
 import { mapActions } from 'vuex';
 
+console.log('root app');
+
 export default {
   name: 'App',
   created() {
@@ -19,6 +21,7 @@ export default {
   methods: {
     ...mapActions([
       'setCurrentUser',
+      'getAllActivities',
     ]),
   },
 };

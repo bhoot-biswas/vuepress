@@ -2,14 +2,17 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <a class="button" v-on:click="signOut">Sign-out</a>
-    {{ currentUser }}
+    <activity-list></activity-list>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+
+import ActivityList from './activity/ActivityList';
 
 export default {
   name: 'HelloWorld',
@@ -19,14 +22,17 @@ export default {
     };
   },
   created() {
-    firebase.auth().currentUser.getIdToken(true).then((idToken) => {
-      console.log(idToken);
-    });
     console.log('HelloWorld created');
   },
   mounted() {
     console.log('HelloWorld mounted');
-    console.log(this.currentUser);
+    firebase.auth().currentUser.getIdToken().then((idToken) => {
+      axios.defaults.headers.common.Authorization = `Bearer ${idToken}`;
+      this.getAllActivities();
+    });
+  },
+  components: {
+    ActivityList,
   },
   methods: {
     signOut() {
@@ -36,10 +42,14 @@ export default {
         console.log(error.message);
       });
     },
+    ...mapActions([
+      'getAllActivities',
+    ]),
   },
   computed: {
     ...mapGetters([
       'currentUser',
+      'activities',
     ]),
   },
 };

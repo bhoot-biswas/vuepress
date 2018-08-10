@@ -4,6 +4,9 @@ import Vue from 'vue';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import 'bootstrap';
+import 'bootstrap/scss/bootstrap.scss';
+
 import App from './App';
 import store from './store';
 import router from './router';
@@ -19,6 +22,7 @@ const config = {
   messagingSenderId: '957607983564',
 };
 
+console.log('init firebase');
 firebase.initializeApp(config);
 
 router.beforeEach((to, from, next) => {

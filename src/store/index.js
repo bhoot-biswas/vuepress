@@ -9,6 +9,7 @@ Vue.use(Vuex);
 
 const state = {
   currentUser: null,
+  activities: [],
 };
 
 export default new Vuex.Store({
