@@ -4,7 +4,10 @@
 
 ## TODO
 
-* CRUD operations on activity component
+* CRUD operations on activity component.
+* Add infinite scroll/load more button.
+* Add the user profile page.
+* Display comments on activity.
 
 ## Build Setup
 
