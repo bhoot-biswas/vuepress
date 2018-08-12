@@ -1,4 +1,4 @@
-import * as api from '@/api';
+import * as api from './../api';
 
 export default {
   setCurrentUser({ commit }) {
@@ -10,12 +10,17 @@ export default {
     });
   },
   addActivity({ commit }, payload) {
-    api.addActivity(payload, activity => {
+    api.addActivity(payload, (activity) => {
       commit('receiveActivity', activity);
     });
   },
-  removeActivity ({ commit }, payload) {
-    api.removeActivity(payload, activity => {
+  editActivity({ commit }, payload) {
+    api.editActivity(payload, (activity, value) => {
+      commit('editActivity', { activity, value });
+    });
+  },
+  removeActivity({ commit }, payload) {
+    api.removeActivity(payload, (activity) => {
       commit('removeActivity', activity);
     });
   },

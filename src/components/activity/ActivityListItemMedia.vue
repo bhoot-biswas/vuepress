@@ -4,6 +4,7 @@
         <div class="media-body">
             <div v-html="activity.title"></div>
             <div class="small">
+              {{activity.date}}
                 {{ activityDate( activity.date ) }}
                 <button class="destroy" @click="removeActivity(activity)">Delete</button>
             </div>

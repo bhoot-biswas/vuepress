@@ -1,15 +1,13 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-
 import 'bootstrap';
 import 'bootstrap/scss/bootstrap.scss';
 
-import App from './App';
-import store from './store';
+import App from './App.vue';
 import router from './router';
+import store from './store';
+import './registerServiceWorker';
 
 Vue.config.productionTip = false;
 
@@ -22,7 +20,6 @@ const config = {
   messagingSenderId: '957607983564',
 };
 
-console.log('init firebase');
 firebase.initializeApp(config);
 
 router.beforeEach((to, from, next) => {
@@ -44,18 +41,9 @@ router.beforeEach((to, from, next) => {
 });
 
 firebase.auth().onAuthStateChanged(() => {
-  /* eslint-disable no-new */
   new Vue({
-    store,
     router,
-    el: '#app',
-    components: { App },
-    template: '<App/>',
-    created() {
-      console.log('vue created');
-    },
-    mounted() {
-      console.log('vue mounted');
-    },
-  });
+    store,
+    render: h => h(App),
+  }).$mount('#app');
 });

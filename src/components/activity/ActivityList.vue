@@ -18,8 +18,8 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import ActivityPostForm from './ActivityPostForm';
-import ActivityListItem from './ActivityListItem';
+import ActivityPostForm from './ActivityPostForm.vue';
+import ActivityListItem from './ActivityListItem.vue';
 
 export default {
   name: 'ActivityList',
