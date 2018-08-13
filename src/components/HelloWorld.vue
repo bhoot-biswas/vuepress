@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { mapGetters, mapActions } from 'vuex';
@@ -18,7 +17,8 @@ export default {
   props: {
     msg: String,
   },
-  mounted() {
+  created() {
+    console.log('hello created');
   },
   components: {
     ActivityList,

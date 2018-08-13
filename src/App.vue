@@ -19,14 +19,15 @@ export default {
   created() {
     this.setCurrentUser();
     firebase.auth().currentUser.getIdToken().then((idToken) => {
-      console.log(idToken);
       axios.defaults.headers.common.Authorization = `Bearer ${idToken}`;
+      this.setReady();
       this.getAllActivities();
     });
   },
   methods: {
     ...mapActions([
       'setCurrentUser',
+      'setReady',
       'getAllActivities',
     ]),
   },

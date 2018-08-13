@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const apiUrl = 'http://localhost/wp/dev/wp-json/buddypress/v1/activity';
 
-export function getAllActivities(cb) {
-  axios.get(apiUrl).then((response) => {
+export function getAllActivities(params, cb) {
+  axios.get(apiUrl, { params }).then((response) => {
     cb(response.data);
   });
 }

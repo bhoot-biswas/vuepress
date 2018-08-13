@@ -13,6 +13,15 @@ export default {
   setCurrentUser(state) {
     state.currentUser = firebase.auth().currentUser;
   },
+  setReady(state) {
+    state.ready = true;
+  },
+  setBusy(state, status) {
+    state.busy = status;
+  },
+  nextPage(state) {
+    state.page += 1;
+  },
   receiveAll(state, activities) {
     activities.forEach((activity) => {
       loadActivity(state, activity);
